@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <typeAliases>
+        <package name="local_test.model" />
+    </typeAliases>
+    <!--利用mybatis提供的xx prvider方法查询数据哭-->
+    <mappers>
+        <package name="cn.llf.framework.dao.mapper"/>
+    </mappers>
+
+</configuration>

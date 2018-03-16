@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 @Data
 @Entity
 @Alias("connectionInfo")
-public class ConnectionInfo {
+public class ConnectionInfo{
 
     private String id;
 
