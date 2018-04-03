@@ -55,10 +55,12 @@ public class BaseMybatisDaoImpl<T,PK extends Serializable> extends SqlSessionDao
                 if (row.containsKey(fieldName)){
                     try {
                         // TODO: 2017/8/17 0017 后期需要完善字段类型判断
-                        if (type == int.class){
+                        if (type == int.class || type == Integer.class){
                             fields[i].set(bean,Integer.parseInt(String.valueOf(row.get(fieldName))));
                         }else if (type == BigDecimal.class){
                             fields[i].set(bean,new BigDecimal(String.valueOf(row.get(fieldName))));
+                        }else if (type == Boolean.class || type == boolean.class){
+                            fields[i].set(bean,Integer.parseInt(String.valueOf(row.get(fieldName)))!=0);
                         } else {
                             fields[i].set(bean,row.get(fieldName));
                         }
