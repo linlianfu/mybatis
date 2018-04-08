@@ -47,27 +47,30 @@ public class BaseMybatisDaoImpl<T,PK extends Serializable> extends SqlSessionDao
             T bean = BeanUtils.instantiate(clazz);
 
             Field[] fields =  bean.getClass().getDeclaredFields();
-            for (int i = 0;i<fields.length; i++){//将记录转换成model
+            for (int i = 0;i<fields.length; i++)
+            {//将记录转换成model
                 Column column = fields[i].getAnnotation(Column.class);
+                if (column == null) continue;
                 Class type = fields[i].getType();
                 String fieldName = column.name();
                 fields[i].setAccessible(true);
-                if (row.containsKey(fieldName)){
+                if (row.containsKey(fieldName))
+                {
                     try {
-                        // TODO: 2017/8/17 0017 后期需要完善字段类型判断
-                        if (type == int.class || type == Integer.class){
-                            fields[i].set(bean,Integer.parseInt(String.valueOf(row.get(fieldName))));
-                        }else if (type == BigDecimal.class){
-                            fields[i].set(bean,new BigDecimal(String.valueOf(row.get(fieldName))));
-                        }else if (type == Boolean.class || type == boolean.class){
-                            fields[i].set(bean,Integer.parseInt(String.valueOf(row.get(fieldName)))!=0);
-                        } else {
-                            fields[i].set(bean,row.get(fieldName));
+                            if (type == int.class || type == Integer.class){
+                                fields[i].set(bean,Integer.parseInt(String.valueOf(row.get(fieldName))));
+                            }else if (type == BigDecimal.class){
+                                fields[i].set(bean,new BigDecimal(String.valueOf(row.get(fieldName))));
+                            }else if (type == Boolean.class || type == boolean.class){
+                                fields[i].set(bean,Integer.parseInt(String.valueOf(row.get(fieldName)))!=0);
+                            } else {
+                                fields[i].set(bean,row.get(fieldName));
+                            }
+                        } catch (IllegalAccessException e)
+                        {
+                            log.info(">>>>>字段设值失败。。。");
+                            e.printStackTrace();
                         }
-                    } catch (IllegalAccessException e) {
-                        log.info(">>>>>字段设值失败。。。");
-                        e.printStackTrace();
-                    }
                 }
             }
             resultList.add(bean);
