@@ -1,4 +1,4 @@
-package priv.llf.mybatis.typehandler;
+package priv.llf.mybatis.typeHandler;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang.StringUtils;
