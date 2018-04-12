@@ -41,4 +41,26 @@ public class Page {
      * 起始页码
      */
     protected int pageNo = 1;
+
+
+    Page(int pageNo,int pageSize){
+        this.pageNo = pageNo;
+        this.pageSize = pageSize;
+    }
+
+    /**
+     * 获取总页数
+     * @return
+     */
+    public long getTotalPageSize(){
+
+        if (totalSize == 0)
+        {
+            return 0;
+        }
+
+        long TotalPageSize = this.totalSize/this.pageSize;
+
+        return this.totalSize % pageSize == 0 ? TotalPageSize : TotalPageSize + 1;
+    }
 }

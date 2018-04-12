@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @Author: calvin
+ * @Author: eleven
  * @Since: 2018/3/10 16:42
  * @Description:
+ * @param <T> 数据模型，对应数据库表的列，其中模型当中的字段必须使用{@link javax.persistence.Column}映射在数据库表中的列
+ * @param <PK> 主键类型
  */
 public interface BaseMybatisDao<T,PK extends Serializable>{
     /**

@@ -7,8 +7,8 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
+import priv.llf.mybatis.annotation.Column;
 
-import javax.persistence.Column;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -39,8 +39,7 @@ public class BaseMybatisDaoImpl<T,PK extends Serializable> extends SqlSessionDao
         Class<T> clazz =  (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         // TODO: 2017/8/17 0017 后期完善查询条件，以及分页
         Map<String ,Map<String,String>> resultMap = getSqlSession().selectMap(statement,primaryKey);
-        List<T> resultList  = new ArrayList<T>(resultMap.size());
-        log.info("符合条件的数据共有{}条：",resultMap.size());
+        List<T> resultList  = new ArrayList<>(resultMap.size());
         Set<String> keySet = resultMap.keySet();
         for (String str : keySet){//获取单条记录
             Map<String,String> row = resultMap.get(str);
@@ -51,11 +50,11 @@ public class BaseMybatisDaoImpl<T,PK extends Serializable> extends SqlSessionDao
             {//将记录转换成model
                 Column column = fields[i].getAnnotation(Column.class);
                 if (column == null) continue;
-                Class type = fields[i].getType();
                 String fieldName = column.name();
-                fields[i].setAccessible(true);
                 if (row.containsKey(fieldName))
                 {
+                    Class type = fields[i].getType();
+                    fields[i].setAccessible(true);
                     try {
                             if (type == int.class || type == Integer.class){
                                 fields[i].set(bean,Integer.parseInt(String.valueOf(row.get(fieldName))));
