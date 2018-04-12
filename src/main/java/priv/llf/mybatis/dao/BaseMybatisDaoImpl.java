@@ -7,8 +7,8 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
-import priv.llf.mybatis.annotation.Column;
 
+import javax.persistence.Column;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
