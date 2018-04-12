@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @Author: calvin
- * @Since: 2018/3/10 16:42
+ * @author: eleven
+ * @since: 2018/3/10 16:42
  * @Description:
  */
 public interface BaseMybatisDao<T,PK extends Serializable>{

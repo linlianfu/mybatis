@@ -18,8 +18,8 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Author：calvin
- * Date:  2017/8/18 0018
+ * @author：eleven
+ * @since:  2017/8/18 0018
  *  * 描述：
  *        1.必须提供无惨构造函数
  *        2提供的sql语句方法必须是public的，返回值必须为String，可以为static。.

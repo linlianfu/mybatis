@@ -11,9 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * @Author: Eleven
- * @Since: 2018/4/7 23:44
- * @Description:
+ * @author: eleven
+ * @since: 2018/4/7 23:44
+ * @description:
  */
 public class JsonObjectTypeHandler extends BaseTypeHandler<JSONObject> {
     @Override

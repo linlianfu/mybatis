@@ -3,8 +3,9 @@ package priv.llf.mybatis.support;
 import lombok.Data;
 
 /**
- * Author：calvin
- * Date:  2017/8/19 0019
+ * @author: eleven
+ * @since: 2018/3/10 16:42
+ * @Description:
  */
 @Data
 public class Page {

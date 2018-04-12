@@ -1,8 +1,8 @@
 package priv.llf.mybatis.constant;
 
 /**
- * Author：calvin
- * Date:  2017/8/19 0019
+ * @author：eleven
+ * @since:  2017/8/19 0019
  */
 public class   MapperSqlMethod {
     public static final String SAVE = "save";
