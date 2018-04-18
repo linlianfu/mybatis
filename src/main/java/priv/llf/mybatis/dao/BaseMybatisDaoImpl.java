@@ -33,12 +33,12 @@ public class BaseMybatisDaoImpl<T,PK extends Serializable> extends SqlSessionDao
         super.setSqlSessionFactory(sqlSessionFactory);
     }
 
-    public List<T> selectList(String statement, String primaryKey,Object paramObject){
+    public List<T> selectList(String statement, String primaryKey,Object query){
         Assert.notNull(statement,"statement can't null");
         Assert.notNull(primaryKey,"primaryKey can't null");
         Class<T> clazz =  (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         // TODO: 2017/8/17 0017 后期完善查询条件，以及分页
-        Map<String ,Map<String,String>> resultMap = getSqlSession().selectMap(statement,primaryKey);
+        Map<String ,Map<String,String>> resultMap = getSqlSession().selectMap(statement,query,primaryKey);
         List<T> resultList  = new ArrayList<>(resultMap.size());
         Set<String> keySet = resultMap.keySet();
         for (String str : keySet){//获取单条记录
