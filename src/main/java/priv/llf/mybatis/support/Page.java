@@ -2,13 +2,15 @@ package priv.llf.mybatis.support;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @author: eleven
  * @since: 2018/3/10 16:42
  * @Description:
  */
 @Data
-public class Page {
+public class Page<T> implements Serializable {
     public static final String PAGE_KEY = "page";
     /**
      * 缺省每页的记录数
