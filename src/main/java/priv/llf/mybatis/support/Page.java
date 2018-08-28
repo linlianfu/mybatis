@@ -1,6 +1,7 @@
 package priv.llf.mybatis.support;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @Description:
  */
 @Data
+@NoArgsConstructor
 public class Page<T> implements Serializable {
     public static final String PAGE_KEY = "page";
     /**
@@ -46,7 +48,7 @@ public class Page<T> implements Serializable {
     protected int pageNo = 1;
 
 
-    Page(int pageNo,int pageSize){
+    public Page(int pageNo,int pageSize){
         this.pageNo = pageNo;
         this.pageSize = pageSize;
     }
