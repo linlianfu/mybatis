@@ -1,12 +1,12 @@
 package priv.llf.mybatis.sql;
 
+import cn.eleven.common.dao.Page;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.util.Assert;
 import priv.llf.mybatis.constant.MapKeyConstant;
-import priv.llf.mybatis.support.Page;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -157,7 +157,7 @@ public class BaseSqlProvider {
      * @throws Exception
      */
     public String findPage(Map<String,Object> param ) throws Exception {
-        Page page     = (Page)param.get(Page.PAGE_KEY);
+        Page page     = (Page)param.get("PAGE");
         Object entity = param.get(MapKeyConstant.ENTITY);
         SQL sql = new SQL();
         Class<?> clazz = entity.getClass();

@@ -9,9 +9,15 @@
   <url>http://maven.apache.org</url>
   <properties>
     <slf4j_version>1.7.6</slf4j_version>
+    <eleven-commonm>1.0.0-SNAPSHOT</eleven-commonm>
   </properties>
   <dependencies>
     <!--spring-->
+    <dependency>
+      <groupId>cn.eleven</groupId>
+      <artifactId>eleven-common</artifactId>
+      <version>${eleven-commonm}</version>
+    </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
